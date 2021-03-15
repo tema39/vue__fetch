@@ -144,8 +144,8 @@
 </template>
 
 <script>
-import VectorIcon from "./SvgIcons/svgVector.vue";
-import AddNnewIcon from "./SvgIcons/svgIconAddNnew.vue";
+import VectorIcon from "./SvgIcons/SvgVector.vue";
+import AddNnewIcon from "./SvgIcons/SvgIconAddNnew.vue";
 
 export default {
   name: "index",
@@ -157,8 +157,7 @@ export default {
     return {
       // параметры
       users: [],
-      a: 1,
-      b: "a",
+    
     };
   },
   methods: {

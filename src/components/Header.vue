@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import Logo from "./SvgIcons/svgLogotip";
-import Moon from "./SvgIcons/svgMoon";
+import Logo from "./SvgIcons/SvgLogotip";
+import Moon from "./SvgIcons/SvgMoon";
 import Message from "./SvgIcons/SvgMessage";
 import Notification from "./SvgIcons/SvgNotification";
 
@@ -46,26 +46,7 @@ export default {
 </script>
 
 <style lang="scss">
-.a {
-  position: absolute;
-  top: 0;
-  left: 16px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 100px;
-  height: 40px;
-  border-radius: 59.4746px;
-
-  background: linear-gradient(
-    101.66deg,
-    #505add 34.4%,
-    #be40c0 66.11%,
-    #fba82b 96.37%
-  );
-}
 .header {
   display: flex;
   align-items: center;
