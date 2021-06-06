@@ -17,152 +17,32 @@
         </button>
       </div>
     </div>
-    <ul class="card__list">
-      <li class="card__list-item">
-        <div class="card__images-wrap">
-          <img class="card__img" alt="" src="../assets/images/plane.jpg" />
-        </div>
-        <div class="card__inner-info">
-          <h3 class="card__title">XR-74 «Cooper»</h3>
-          <p class="card__description">
-            Brief description of the project,<br />
-            in a few lines.
-          </p>
-          <p class="card__text">1 278 $/h</p>
-        </div>
-      </li>
-      <li class="card__list-item">
-        <div class="card__images-wrap">
-          <img class="card__img" src="../assets/images/plane.jpg" />
-        </div>
-        <div class="card__inner-info">
-          <h3 class="card__title">XR-74 «Cooper»</h3>
-          <p class="card__description">
-            Brief description of the project,<br />
-            in a few lines.
-          </p>
-          <p class="card__text">164 $/h</p>
-        </div>
-      </li>
-      <li class="card__list-item">
-        <div class="card__images-wrap">
-          <img class="card__img" src="../assets/images/plane.jpg" />
-        </div>
-        <div class="card__inner-info">
-          <h3 class="card__title">XR-74 «Cooper»</h3>
-          <p class="card__description">
-            Brief description of the project,<br />
-            in a few lines.
-          </p>
-          <p class="card__text">164 $/h</p>
-        </div>
-      </li>
-      <li class="card__list-item">
-        <div class="card__images-wrap">
-          <img class="card__img" src="../assets/images/plane.jpg" />
-        </div>
-        <div class="card__inner-info">
-          <h3 class="card__title">XR-74 «Cooper»</h3>
-          <p class="card__description">
-            Brief description of the project,<br />
-            in a few lines.
-          </p>
-          <p class="card__text">164 $/h</p>
-        </div>
-      </li>
-      <li class="card__list-item">
-        <div class="card__images-wrap">
-          <img class="card__img" src="../assets/images/plane.jpg" />
-        </div>
-        <div class="card__inner-info">
-          <h3 class="card__title">XR-74 «Cooper»</h3>
-          <p class="card__description">
-            Brief description of the project,<br />
-            in a few lines.
-          </p>
-          <p class="card__text">164 $/h</p>
-        </div>
-      </li>
-      <li class="card__list-item">
-        <div class="card__images-wrap">
-          <img class="card__img" src="../assets/images/plane.jpg" />
-        </div>
-        <div class="card__inner-info">
-          <h3 class="card__title">XR-74 «Cooper»</h3>
-          <p class="card__description">
-            Brief description of the project,<br />
-            in a few lines.
-          </p>
-          <p class="card__text">1 278 $/h</p>
-        </div>
-      </li>
-      <li class="card__list-item">
-        <div class="card__images-wrap">
-          <img class="card__img" src="../assets/images/plane.jpg" />
-        </div>
-        <div class="card__inner-info">
-          <h3 class="card__title">XR-74 «Cooper»</h3>
-          <p class="card__description">
-            Brief description of the project,<br />
-            in a few lines.
-          </p>
-          <p class="card__text">164 $/h</p>
-        </div>
-      </li>
-      <li class="card__list-item">
-        <div class="card__images-wrap">
-          <img class="card__img" src="../assets/images/plane.jpg" />
-        </div>
-        <div class="card__inner-info">
-          <h3 class="card__title">XR-74 «Cooper»</h3>
-          <p class="card__description">
-            Brief description of the project,<br />
-            in a few lines.
-          </p>
-          <p class="card__text">164 $/h</p>
-        </div>
-      </li>
-      <li class="card__list-item">
-        <div class="card__images-wrap">
-          <img class="card__img" src="../assets/images/plane.jpg" />
-        </div>
-        <div class="card__inner-info">
-          <h3 class="card__title">XR-74 «Cooper»</h3>
-          <p class="card__description">
-            Brief description of the project,<br />
-            in a few lines.
-          </p>
-          <p class="card__text">164 $/h</p>
-        </div>
-      </li>
+    <ul class="card__list" v-if="cards.length > 0">
+      <Card v-for="el in cards" :key="el.id" :card="el"></Card>
     </ul>
-    <div v-for="el in users" :key="el.id">
-      <p>name: {{ el.name }}</p>
-      <p>company: {{ el.company.name }}</p>
-    </div>
   </section>
 </template>
 
 <script>
 import VectorIcon from "./SvgIcons/SvgVector.vue";
 import AddNnewIcon from "./SvgIcons/SvgIconAddNnew.vue";
+import Card from "./card.vue";
 
 export default {
   name: "index",
   components: {
     VectorIcon,
     AddNnewIcon,
+    Card,
   },
   data() {
     return {
       // параметры
-      users: [],
-    
+      cards: [],
     };
   },
   methods: {
     // хранит функци компонента
-
     get() {
       const url = "https://jsonplaceholder.typicode.com/users";
       fetch(url, {
@@ -175,8 +55,8 @@ export default {
           return response.json();
         })
         .then((result) => {
-          this.users = result;
-          console.log(this.users);
+          this.cards = result;
+          console.log(result);
         });
     },
   },
@@ -188,7 +68,6 @@ export default {
 
 <style lang="scss">
 .section__cards {
-  // раздробить стили
   background: #f3f4f7;
 
   border-radius: 48px;
@@ -328,7 +207,7 @@ export default {
         background: #fcfcfc;
         border-radius: 32px;
 
-        padding: 0px 20px;
+        padding: 0px 7px;
         margin: 0px 8px 32px 0px;
       }
       .card__images-wrap {
